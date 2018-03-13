@@ -13,14 +13,15 @@ class App extends React.Component {
 	}
 
 	storeSubscribe = () => {
+		let self = this;
 		store.subscribe(function () {
-			this.setState(store.getState());
+			self.setState(store.getState());
 			console.log("Testing",store.getState());
 		});
 	}
 
 	render(){
-		console.log("APP==============",this,store.getState());
+		console.log("APP",this.state);
 		return (
 			<div style={
 				{
@@ -35,11 +36,11 @@ class App extends React.Component {
 			}>
 				<div style={{display:"flex",justifyContent:"space-around",width:"100%"}}>
 					<div style={{color:"black"}}>
-						<Year/>
+						<Year data={this.state}/>
 					</div>
 
 					<div style={{color:"black"}}>
-						<Month/>
+						<Month data={this.state}/>
 					</div>	
 				</div>
 				
